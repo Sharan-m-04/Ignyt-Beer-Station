@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignyte - The Beer Lounge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-section {
+            /* background-color: rgb(223, 240, 255); */
+            /* background-color: rgb(121, 175, 255); */
+            /* background-color: rgb(241 241 241); */
+            /* background-color: rgb(167, 205, 255); */
+            background-color: #FFD700;
+            display: flex;
+            align-items: center;
+            box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, .2);
+            position: fixed;
+            z-index: 3;
+            width: 100%;
+        }
+
+        .navig {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+        }
+
+        .profilePic {
+            width: 56px;
+            height: 50px;
+            background-image: url('Images/profile.jpg');
+            border-radius: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+
+        .profilePic:hover {
+            cursor: pointer;
+        }
+
+        .navul {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            width: 100%;
+        }
+
+        .navItem {
+            list-style: none;
+        }
+
+        .navLink {
+            text-decoration: none;
+            /* color: rgb(0, 20, 46); */
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .navLink:hover {
+            /* color: rgb(18, 61, 117); */
+            color: #fff29b;
+        }
+
+        .burger {
+            width: 33px;
+            height: 50px;
+            display: none;
+            position: absolute;
+            cursor: pointer;
+            right: 5%;
+            top: 15px;
+        }
+
+        .line {
+            background-color: white;
+            width: 33px;
+            height: 4px;
+            margin: 3px 5px;
+        }
+
+        @media only screen and (max-width: 906px) {
+            /* Navigation Section */
+
+            .navul {
+                flex-direction: column;
+                position: absolute;
+                margin: 0;
+                left: 0;
+            }
+
+            .navLink {
+                font-size: 22px;
+            }
+
+            .navig {
+                height: 253px;
+                flex-direction: column;
+                transition: all 0.1s ease-out;
+            }
+
+            .profilePic {
+                width: 50px;
+            }
+
+            .burger {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu {
+                width: 70px;
+                height: 30px;
+            }
+
+            .h-nav-resp {
+                height: 80px;
+            }
+
+            .v-class-resp {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="nav-section">
+        <nav class="navig h-nav-resp">
+            <div class="profilePic"><img src="../../Images/logo.jpg" alt="logo"></div>
+            <ul class="navul v-class-resp">
+                <li class="navItem"><a href="#" class="navLink">Home</a></li>
+                <li class="navItem"><a href="#about-us" class="navLink">About Us</a></li>
+                <li class="navItem"><a href="#menu" class="navLink">Menu</a></li>
+                <li class="navItem"><a href="#events" class="navLink">Events & Promotions</a></li>
+                <li class="navItem"><a href="#shop" class="navLink">Shop</a></li>
+                <li class="navItem"><a href="#gallery" class="navLink">Gallery</a></li>
+                <li class="navItem"><a href="#blog" class="navLink">Blog</a></li>
+                <li class="navItem"><a href="#contact-us" class="navLink">Contact Us</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </section>
+
+    <script>
+        //Navigation Burgur
+
+        burger = document.querySelector('.burger');
+        navig = document.querySelector('.navig');
+        navul = document.querySelector('.navul');
+
+        burger.addEventListener('click', () => {
+            navig.classList.toggle('h-nav-resp');
+            navul.classList.toggle('v-class-resp');
+        });
+    </script>
+</body>
+
+</html>
