@@ -89,6 +89,22 @@
             margin: 3px 5px;
         }
 
+        .login-btn {
+            position: absolute;
+            right: 20px;
+            background: #ffe090;
+            border: none;
+            padding: 10px;
+            border-radius: 50px;
+            color: #000;
+            font-size: 18px;
+        }
+        
+        .login-btn:hover{
+            background: #ffd66e;
+            cursor: pointer;
+        }
+
         /* Image Slider */
 
         .slideshow-container {
@@ -137,8 +153,8 @@
             border: none;
             text-align: center;
         }
-        
-        .shop-btn:hover{
+
+        .shop-btn:hover {
             background-color: #c8920c;
             cursor: pointer;
         }
@@ -407,6 +423,10 @@
                 display: none;
             }
 
+            .login-btn {
+                right: 80px;
+            }
+
             /* Home Section */
 
             .caption {
@@ -476,6 +496,7 @@
                 <li class="navItem"><a href="/blog" class="navLink">Blog</a></li>
                 <li class="navItem"><a href="#contact-us" class="navLink">Contact Us</a></li>
             </ul>
+            <button class="login-btn" onclick="logIn()">Log in</button>
             <div class="burger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -532,7 +553,7 @@
     <section class="contact-sec" id="contact-us">
         <p class="abt-head">Contact Us</p>
         <div class="contact">
-            <form class="form" action="index.html" method="POST">
+            <form class="form">
                 <input class="inputBox" id="name" name="name" type="text" placeholder="Full Name" required>
                 <input class="inputBox" id="email" name="email" type="email" placeholder="E-Mail" required>
                 <input class="inputBox" id="subject" name="subject" type="text" placeholder="Subject" required>
@@ -610,8 +631,11 @@
             dots[slideIndex - 1].className += " active";
         }
 
-        function shopNow(){
+        function shopNow() {
             window.open('/shop', '_self');
+        }
+        function logIn() {
+            window.open('/accounts/login', '_self');
         }
     </script>
 </body>

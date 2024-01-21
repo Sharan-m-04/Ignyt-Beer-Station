@@ -24,4 +24,5 @@ urlpatterns = [
     path('gallery/', include("gallery.urls")),
     path('blog/', include("blog.urls")),
     path('menu/', include("menu.urls")),
+    path('accounts/', include("accounts.urls")),
 ]
