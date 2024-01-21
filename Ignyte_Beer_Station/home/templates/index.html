@@ -87,74 +87,126 @@
 
         /* Image Slider */
 
-        .container {
+        .slideshow-container {
             width: 100%;
-            height: 100%;
+            /* height: 400px; */
             position: relative;
-            background: #355c7d;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            overflow: hidden;
+            margin: auto;
+            padding-top: 80px;
         }
-
-        .container img {
+        
+        .slider-images {
+            filter: brightness(0.5);
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            margin: auto;
-            animation: fade 1s;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Hide the images by default */
+        .mySlides {
+            /* height: 50%; */
+            display: none;
         }
 
-        .container .arrow {
-            z-index: 10;
-            position: absolute;
-            margin: auto;
-            left: auto;
-            right: auto;
-            width: 1.5rem;
-            height: 1.5rem;
-            font-size: 1.5rem;
-            color: cornsilk;
-            opacity: 0.5;
-            transition: opacity 1s;
-        }
-
-        .container .arrow:hover {
-            cursor: pointer;
-            opacity: 1;
-        }
-
-        .container .arrow-left {
-            left: 2%;
-        }
-
-        .container .arrow-right {
-            right: 2%;
-        }
-
-        .container .dots {
-            position: absolute;
-            margin: auto;
-            top: auto;
-            bottom: 2%;
-            left: 0;
-            right: 0;
-            width: 7rem;
-            height: auto;
-            z-index: 5;
-        }
-
-        .container .dots .dot {
-            width: 2rem;
-            height: 2rem;
-            display: inline-flex;
-            align-content: center;
+        .cont {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            color: cornsilk;
+            position: absolute;
+            padding: 8px 12px;
+            top: 40%;
+            width: 100%;
+        }
+        
+        .caption {
+            color: #f2f2f2;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .shop-btn {
+            background-color: #e7b532;
+            color: #f2f2f2;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(177, 177, 177, 0.8);
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
         }
 
         @keyframes fade {
@@ -216,7 +268,7 @@
 </head>
 
 <body>
-    <section class="nav-section">
+    <header class="nav-section">
         <nav class="navig h-nav-resp">
             {% load static %}<img src="{% static 'logo.png' %}" alt="logo" class="profilePic">
             <ul class="navul v-class-resp">
@@ -235,29 +287,40 @@
                 <div class="line"></div>
             </div>
         </nav>
-    </section>
+    </header>
 
     <section class="homepage">
-        <div class="container">
-            <div class="arrow arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
-            {% load static %}<img src="{% static 'banner1.jpg' %}" alt="">
-            {% load static %}<img src="{% static 'banner2.jpg' %}" alt="">
-            {% load static %}<img src="{% static 'banner3.jpg' %}" alt="">
-            <div class="arrow arrow-right"><i class="fas fa-chevron-circle-right"></i>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                {% load static %}<img src="{% static 'banner1.jpg' %}" class="slider-images">
             </div>
-            <div class="dots">
-                <div class="dot">
-                    <i class="far fa-dot-circle"></i>
-                </div>
-                <div class="dot">
-                    <i class="far fa-circle"></i>
-                </div>
-                <div class="dot">
-                    <i class="far fa-circle"></i>
-                </div>
+            <div class="mySlides fade">
+                {% load static %}<img src="{% static 'banner2.jpg' %}" class="slider-images">
             </div>
+            <div class="mySlides fade">
+                {% load static %}<img src="{% static 'banner3.jpg' %}" class="slider-images">
+            </div>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <div class="cont">
+            <p class="caption">IGNYT your guilty pleasure!</p>
+            <div class="shop-btn" onclick="shopNow()">Shop Now !</div>
         </div>
     </section>
+</section>
 
     <script>
         //Navigation Burgur
@@ -272,44 +335,38 @@
         });
 
         // Image slider
-        const imgs = document.querySelectorAll(".container img");
-        const dots = document.querySelectorAll(".dot i");
-        const leftArrow = document.querySelector(".arrow-left");
-        const rightArrow = document.querySelector(".arrow-right");
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-        let currentIndex = 0;
-        let time = 5000; // default time for auto slideshow
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-        const defClass = (startPos, index) => {
-            for (let i = startPos; i < imgs.length; i++) {
-                imgs[i].style.display = "none";
-                dots[i].classList.remove("fa-dot-circle");
-                dots[i].classList.add("fa-circle");
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
-            imgs[index].style.display = "block";
-            dots[index].classList.add("fa-dot-circle");
-        };
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
 
-        defClass(1, 0);
-
-        leftArrow.addEventListener("click", function () {
-            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
-            defClass(0, currentIndex);
-        });
-
-        rightArrow.addEventListener("click", function () {
-            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
-            defClass(0, currentIndex);
-        });
-
-        const startAutoSlide = () => {
-            setInterval(() => {
-                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
-                defClass(0, currentIndex);
-            }, time);
-        };
-
-        startAutoSlide(); // Start the slideshow
+        // function shopNow() {
+        //     window.location.href = "{% url 'shop' %}"
+        // }
     </script>
 </body>
 
