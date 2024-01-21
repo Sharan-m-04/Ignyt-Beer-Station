@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ignyte - The Beer Lounge</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-        
+
         * {
             padding: 0;
             margin: 0;
@@ -16,11 +17,7 @@
         }
 
         .nav-section {
-            /* background-color: rgb(223, 240, 255); */
-            /* background-color: rgb(121, 175, 255); */
-            /* background-color: rgb(241 241 241); */
-            /* background-color: rgb(167, 205, 255); */
-            background-color: #FFD700;
+            background-color: #e7b532;
             display: flex;
             align-items: center;
             box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, .2);
@@ -38,11 +35,7 @@
         .profilePic {
             width: 56px;
             height: 50px;
-            background-image: url('Images/profile.jpg');
             border-radius: 50%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
         }
 
         .profilePic:hover {
@@ -92,6 +85,89 @@
             margin: 3px 5px;
         }
 
+        /* Image Slider */
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #355c7d;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            overflow: hidden;
+        }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            margin: auto;
+            animation: fade 1s;
+        }
+
+        .container .arrow {
+            z-index: 10;
+            position: absolute;
+            margin: auto;
+            left: auto;
+            right: auto;
+            width: 1.5rem;
+            height: 1.5rem;
+            font-size: 1.5rem;
+            color: cornsilk;
+            opacity: 0.5;
+            transition: opacity 1s;
+        }
+
+        .container .arrow:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .container .arrow-left {
+            left: 2%;
+        }
+
+        .container .arrow-right {
+            right: 2%;
+        }
+
+        .container .dots {
+            position: absolute;
+            margin: auto;
+            top: auto;
+            bottom: 2%;
+            left: 0;
+            right: 0;
+            width: 7rem;
+            height: auto;
+            z-index: 5;
+        }
+
+        .container .dots .dot {
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
+            color: cornsilk;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0.1;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
         @media only screen and (max-width: 906px) {
             /* Navigation Section */
 
@@ -107,7 +183,7 @@
             }
 
             .navig {
-                height: 253px;
+                height: 289px;
                 flex-direction: column;
                 transition: all 0.1s ease-out;
             }
@@ -142,7 +218,7 @@
 <body>
     <section class="nav-section">
         <nav class="navig h-nav-resp">
-            <div class="profilePic"><img src="../../Images/logo.jpg" alt="logo"></div>
+            {% load static %}<img src="{% static 'logo.png' %}" alt="logo" class="profilePic">
             <ul class="navul v-class-resp">
                 <li class="navItem"><a href="#" class="navLink">Home</a></li>
                 <li class="navItem"><a href="#about-us" class="navLink">About Us</a></li>
@@ -161,6 +237,28 @@
         </nav>
     </section>
 
+    <section class="homepage">
+        <div class="container">
+            <div class="arrow arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+            {% load static %}<img src="{% static 'banner1.jpg' %}" alt="">
+            {% load static %}<img src="{% static 'banner2.jpg' %}" alt="">
+            {% load static %}<img src="{% static 'banner3.jpg' %}" alt="">
+            <div class="arrow arrow-right"><i class="fas fa-chevron-circle-right"></i>
+            </div>
+            <div class="dots">
+                <div class="dot">
+                    <i class="far fa-dot-circle"></i>
+                </div>
+                <div class="dot">
+                    <i class="far fa-circle"></i>
+                </div>
+                <div class="dot">
+                    <i class="far fa-circle"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         //Navigation Burgur
 
@@ -172,6 +270,46 @@
             navig.classList.toggle('h-nav-resp');
             navul.classList.toggle('v-class-resp');
         });
+
+        // Image slider
+        const imgs = document.querySelectorAll(".container img");
+        const dots = document.querySelectorAll(".dot i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 5000; // default time for auto slideshow
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); // Start the slideshow
     </script>
 </body>
 
