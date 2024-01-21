@@ -8,12 +8,18 @@
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         .nav-section {
@@ -57,14 +63,12 @@
 
         .navLink {
             text-decoration: none;
-            /* color: rgb(0, 20, 46); */
             color: white;
             padding: 10px;
             font-size: 20px;
         }
 
         .navLink:hover {
-            /* color: rgb(18, 61, 117); */
             color: #fff29b;
         }
 
@@ -89,12 +93,11 @@
 
         .slideshow-container {
             width: 100%;
-            /* height: 400px; */
             position: relative;
             margin: auto;
             padding-top: 80px;
         }
-        
+
         .slider-images {
             filter: brightness(0.5);
             width: 100%;
@@ -102,10 +105,9 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
+
         /* Hide the images by default */
         .mySlides {
-            /* height: 50%; */
             display: none;
         }
 
@@ -119,10 +121,10 @@
             top: 40%;
             width: 100%;
         }
-        
+
         .caption {
-            color: #f2f2f2;
-            font-size: 20px;
+            color: white;
+            font-size: 40px;
             text-align: center;
         }
 
@@ -132,7 +134,13 @@
             padding: 10px;
             margin-top: 5px;
             border-radius: 50px;
+            border: none;
             text-align: center;
+        }
+        
+        .shop-btn:hover{
+            background-color: #c8920c;
+            cursor: pointer;
         }
 
         /* Next & previous buttons */
@@ -219,6 +227,141 @@
             }
         }
 
+        /* About Us */
+
+
+        .abt-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abt-div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .abt-head {
+            font-size: 80px;
+            text-align: center;
+            margin-top: 75px;
+        }
+
+        .abt-cont {
+            font-size: 20px;
+            text-align: center;
+            width: 50%;
+            margin-top: 15px 0 15px 0;
+        }
+
+        /* Contact us */
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .inputBox {
+            padding: 8px;
+            margin: 5px;
+            background-color: rgb(243, 243, 243);
+            border: 1.5px solid rgb(159, 159, 159);
+            border-radius: 10px;
+            width: 30%;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .inputBox:focus {
+            border: 1.5px solid #e7b532;
+            outline: 1.5px;
+        }
+
+        .inputBtn {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #e7b532;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin: 10px;
+            color: white;
+            width: 8%;
+        }
+
+        .inputBtn:focus {
+            outline: 0;
+        }
+
+        .inputBtn:hover {
+            background-color: #b27f00;
+        }
+
+        /* Footer */
+
+        .footer {
+            /* height: 20vh; */
+            padding: 20px;
+            background-color: #3b3711;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-head {
+            color: #fffec5;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .footer-navul {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 8px;
+            width: 100%;
+        }
+
+        .footer-navItem {
+            list-style: none;
+        }
+
+        .footer-navLink {
+            text-decoration: none;
+            color: #fffec5;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .footer-navLink:hover {
+            color: #fffff1;
+        }
+
+        .social-icons {
+            text-decoration: none;
+            color: #fffec5;
+            font-size: 18px;
+            margin: 3px;
+        }
+
+        .social-icons:hover {
+            color: #fffff1;
+        }
 
         @media only screen and (max-width: 906px) {
             /* Navigation Section */
@@ -235,7 +378,7 @@
             }
 
             .navig {
-                height: 289px;
+                height: 256px;
                 flex-direction: column;
                 transition: all 0.1s ease-out;
             }
@@ -263,6 +406,59 @@
             .v-class-resp {
                 display: none;
             }
+
+            /* Home Section */
+
+            .caption {
+                font-size: 20px;
+            }
+
+            /* About section */
+
+            .abt-head {
+                font-size: 50px;
+            }
+
+            .abt-cont {
+                font-size: 16px;
+                width: 80%;
+            }
+
+            /* Footer Section */
+
+            .footer-head {
+                font-size: 14px;
+            }
+
+            .footer-navLink {
+                font-size: 12px;
+            }
+
+            .social-icons {
+                font-size: 14px;
+            }
+        }
+
+        /* Contact section */
+
+        @media only screen and (max-width: 768px) {
+            .inputBox {
+                width: 50%;
+            }
+
+            .inputBtn {
+                width: 13%;
+            }
+        }
+
+        @media only screen and (max-width: 515px) {
+            .inputBox {
+                width: 80%;
+            }
+
+            .inputBtn {
+                width: 25%;
+            }
         }
     </style>
 </head>
@@ -274,11 +470,10 @@
             <ul class="navul v-class-resp">
                 <li class="navItem"><a href="#" class="navLink">Home</a></li>
                 <li class="navItem"><a href="#about-us" class="navLink">About Us</a></li>
-                <li class="navItem"><a href="#menu" class="navLink">Menu</a></li>
-                <li class="navItem"><a href="#events" class="navLink">Events & Promotions</a></li>
-                <li class="navItem"><a href="#shop" class="navLink">Shop</a></li>
-                <li class="navItem"><a href="#gallery" class="navLink">Gallery</a></li>
-                <li class="navItem"><a href="#blog" class="navLink">Blog</a></li>
+                <li class="navItem"><a href="/menu" class="navLink">Menu</a></li>
+                <li class="navItem"><a href="/shop" class="navLink">Shop</a></li>
+                <li class="navItem"><a href="/gallery" class="navLink">Gallery</a></li>
+                <li class="navItem"><a href="/blog" class="navLink">Blog</a></li>
                 <li class="navItem"><a href="#contact-us" class="navLink">Contact Us</a></li>
             </ul>
             <div class="burger">
@@ -295,20 +490,20 @@
 
             <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
-                {% load static %}<img src="{% static 'banner1.jpg' %}" class="slider-images">
-            </div>
-            <div class="mySlides fade">
                 {% load static %}<img src="{% static 'banner2.jpg' %}" class="slider-images">
             </div>
             <div class="mySlides fade">
                 {% load static %}<img src="{% static 'banner3.jpg' %}" class="slider-images">
+            </div>
+            <div class="mySlides fade">
+                {% load static %}<img src="{% static 'banner1.jpg' %}" class="slider-images">
             </div>
             <!-- Next and previous buttons -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
-        
+
         <!-- The dots/circles -->
         <div style="text-align:center">
             <span class="dot" onclick="currentSlide(1)"></span>
@@ -317,11 +512,62 @@
         </div>
         <div class="cont">
             <p class="caption">IGNYT your guilty pleasure!</p>
-            <div class="shop-btn" onclick="shopNow()">Shop Now !</div>
+            <button class="shop-btn" onclick="shopNow()">Shop Now</button>
         </div>
     </section>
-</section>
+    <section class="abt-section" id="about-us">
+        <div class="abt-div reveal fade-pop">
+            <p class="abt-head">About Us</p>
+            <p class="abt-cont">
+                Welcome to Ignyte - The Beer Lounge, where we fuse the love of craft brews with a welcoming community
+                vibe. Dive into a curated selection of local and international craft beers in our cozy, contemporary
+                space. Whether you're a seasoned enthusiast or a curious newcomer, Ignyte is the perfect spot to savor
+                diverse flavors, share stories, and immerse yourself in the vibrant world of craft brewing. Cheers to
+                unforgettable experiences and the joy of great beer!
+            </p>
+            <button class="shop-btn" onclick="shopNow()">Shop Now</button>
+        </div>
+    </section>
 
+    <section class="contact-sec" id="contact-us">
+        <p class="abt-head">Contact Us</p>
+        <div class="contact">
+            <form class="form" action="index.html" method="POST">
+                <input class="inputBox" id="name" name="name" type="text" placeholder="Full Name" required>
+                <input class="inputBox" id="email" name="email" type="email" placeholder="E-Mail" required>
+                <input class="inputBox" id="subject" name="subject" type="text" placeholder="Subject" required>
+                <textarea class="inputBox" name="message" id="message" cols="20" rows="5" placeholder="Message"
+                    required></textarea>
+                <input class="inputBtn" id="submit" name="submit" type="submit" value="Submit">
+            </form>
+        </div>
+    </section>
+
+    <section class="footer">
+        <p class="footer-head">
+            Ignyte - The Beer Lounge
+        </p>
+        <div class="footer-nav">
+            <ul class="footer-navul">
+                <li class="footer-navItem"><a href="#" class="footer-navLink">Home</a></li>
+                <li class="footer-navItem"><a href="#about-us" class="footer-navLink">About Us</a></li>
+                <li class="footer-navItem"><a href="/menu" class="footer-navLink">Menu</a></li>
+                <li class="footer-navItem"><a href="/shop" class="footer-navLink">Shop</a></li>
+                <li class="footer-navItem"><a href="/gallery" class="footer-navLink">Gallery</a></li>
+                <li class="footer-navItem"><a href="/blog" class="footer-navLink">Blog</a></li>
+                <li class="footer-navItem"><a href="#contact-us" class="footer-navLink">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="social-links">
+            <a href="https://www.google.com/maps/dir/12.959744,77.6536064/ignyt+the+beer+statiom/@12.93736,77.5266965,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bae1519a60e7f6d:0x743cf4ee0c36a725!2m2!1d77.5640791!2d12.9075462?entry=ttu"
+                class="social-icons" target="_blank"><i class="fa-solid fa-location-dot"></i></a>
+            <a href="https://www.instagram.com/ignyt_thebeerstation/" class="social-icons" target="_blank"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="callto:8217779517" class="social-icons" target="_blank"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </section>
+
+    <script src="https://kit.fontawesome.com/89af5da05d.js" crossorigin="anonymous"></script>
     <script>
         //Navigation Burgur
 
@@ -364,9 +610,9 @@
             dots[slideIndex - 1].className += " active";
         }
 
-        // function shopNow() {
-        //     window.location.href = "{% url 'shop' %}"
-        // }
+        function shopNow(){
+            window.open('/shop', '_self');
+        }
     </script>
 </body>
 
